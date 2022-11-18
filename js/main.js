@@ -116,22 +116,28 @@ const iconsArray = [
 const iconContainerEl = document.querySelector(".row");
 const selectEl = document.getElementById("Selezione");
 let selezione = "all";
+let contentContainer;
+iconsArray.forEach((element) => {
+  stampaCard(element);
+});
 selectEl.addEventListener("change", function () {
   iconContainerEl.innerHTML = "";
   selezione = selectEl.value;
-  iconsArray.forEach(function (element) {
-    let contentContianer = document.createElement("div");
-    contentContianer.classList.add("my-card", "col-3");
 
+  iconsArray.forEach((element) => {
     if (selezione === "all") {
-      contentContianer.innerHTML += `<i style="color : ${element.color}"class="${element.family} ${element.prefix}${element.name}"></i> `;
-      contentContianer.append(element.name);
-      iconContainerEl.append(contentContianer);
+      stampaCard(element);
     }
     if (selezione === element.type) {
-      contentContianer.innerHTML += `<i style="color : ${element.color}"class="${element.family} ${element.prefix}${element.name}"></i> `;
-      contentContianer.append(element.name);
-      iconContainerEl.append(contentContianer);
+      stampaCard(element);
     }
   });
 });
+
+function stampaCard(element) {
+  contentContainer = document.createElement("div");
+  contentContainer.classList.add("my-card", "col-2");
+  contentContainer.innerHTML += `<i style="color : ${element.color}"class="${element.family} ${element.prefix}${element.name}"></i> `;
+  contentContainer.append(element.name);
+  iconContainerEl.append(contentContainer);
+}
