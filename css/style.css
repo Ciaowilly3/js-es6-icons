@@ -1,0 +1,17 @@
+body {
+  background-color: gray;
+}
+header {
+  background-color: white;
+}
+nav {
+  background-color: lightblue;
+}
+.my-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  box-shadow: 4px;
+  border-radius: 16px;
+}
