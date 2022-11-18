@@ -114,11 +114,24 @@ const iconsArray = [
 ];
 
 const iconContainerEl = document.querySelector(".row");
+const selectEl = document.getElementById("Selezione");
+let selezione = "all";
+selectEl.addEventListener("change", function () {
+  iconContainerEl.innerHTML = "";
+  selezione = selectEl.value;
+  iconsArray.forEach(function (element) {
+    let contentContianer = document.createElement("div");
+    contentContianer.classList.add("my-card", "col-3");
 
-iconsArray.forEach(function (element) {
-  let contentContianer = document.createElement("div");
-  contentContianer.classList.add("my-card", "col-3");
-  contentContianer.innerHTML += `<i style="color : ${element.color}"class="${element.family} ${element.prefix}${element.name}"></i> `;
-  contentContianer.append(element.name);
-  iconContainerEl.append(contentContianer);
+    if (selezione === "all") {
+      contentContianer.innerHTML += `<i style="color : ${element.color}"class="${element.family} ${element.prefix}${element.name}"></i> `;
+      contentContianer.append(element.name);
+      iconContainerEl.append(contentContianer);
+    }
+    if (selezione === element.type) {
+      contentContianer.innerHTML += `<i style="color : ${element.color}"class="${element.family} ${element.prefix}${element.name}"></i> `;
+      contentContianer.append(element.name);
+      iconContainerEl.append(contentContianer);
+    }
+  });
 });
